@@ -11,8 +11,12 @@ class Album {
     private var contents = [MediaContentContainable]()
     private var cache = Set<ObjectIdentifier>()
     
+    var count: Int {
+        self.contents.count
+    }
+    
     subscript(index: Int) -> MediaContentContainable? {
-        guard index > contents.startIndex && index < contents.endIndex else {
+        guard index >= contents.startIndex && index < contents.endIndex else {
             return nil
         }
         
