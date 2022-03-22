@@ -13,6 +13,7 @@
 		37E101B527E96108009B9E3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B327E96108009B9E3B /* Main.storyboard */; };
 		37E101B727E96109009B9E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B627E96109009B9E3B /* Assets.xcassets */; };
 		37E101BA27E96109009B9E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B827E96109009B9E3B /* LaunchScreen.storyboard */; };
+		E4D1D0E727E9BA2300322B88 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		37E101B627E96109009B9E3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37E101B927E96109009B9E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37E101BB27E96109009B9E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		37E101AC27E96108009B9E3B /* PhotoAlbumApp */ = {
 			isa = PBXGroup;
 			children = (
-				37E101AD27E96108009B9E3B /* AppDelegate.swift */,
+				E4D1D0E427E9B9D900322B88 /* Utility */,
 				37E101AF27E96108009B9E3B /* SceneDelegate.swift */,
+				37E101AD27E96108009B9E3B /* AppDelegate.swift */,
 				37E101B127E96108009B9E3B /* ViewController.swift */,
+				E4D1D0E927E9BA4700322B88 /* Supports */,
 				37E101B327E96108009B9E3B /* Main.storyboard */,
 				37E101B627E96109009B9E3B /* Assets.xcassets */,
 				37E101B827E96109009B9E3B /* LaunchScreen.storyboard */,
 				37E101BB27E96109009B9E3B /* Info.plist */,
 			);
 			path = PhotoAlbumApp;
+			sourceTree = "<group>";
+		};
+		E4D1D0E427E9B9D900322B88 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		E4D1D0E927E9BA4700322B88 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D1D0E727E9BA2300322B88 /* UIColor+Random.swift in Sources */,
 				37E101B227E96108009B9E3B /* ViewController.swift in Sources */,
 				37E101AE27E96108009B9E3B /* AppDelegate.swift in Sources */,
 				37E101B027E96108009B9E3B /* SceneDelegate.swift in Sources */,
