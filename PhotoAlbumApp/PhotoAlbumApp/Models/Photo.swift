@@ -10,8 +10,6 @@ import Foundation
 class Photo: MediaContentContainable {
     let size: Size
     
-    private(set) var image: URL?
-    
     // MARK: - 생성자
     init(width: Double, height: Double) {
         self.size = Size(width: width, height: height)
@@ -19,9 +17,5 @@ class Photo: MediaContentContainable {
     
     init(size: Size) {
         self.size = size
-    }
-    
-    func setImage(with url: URL) {
-        self.image = url
     }
 }

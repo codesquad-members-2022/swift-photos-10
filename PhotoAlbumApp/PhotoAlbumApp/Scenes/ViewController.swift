@@ -32,7 +32,7 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reusableCellName, for: indexPath)
         cell.backgroundColor = .random()
-        cell.frame.size = CGSize(width: 100, height: 100)
+        cell.frame.size = CGSize(width: 80, height: 80)
         
         return cell
     }
