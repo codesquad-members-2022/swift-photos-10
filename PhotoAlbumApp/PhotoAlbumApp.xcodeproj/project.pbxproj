@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37B7782B27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7782A27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift */; };
 		37E101AE27E96108009B9E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E101AD27E96108009B9E3B /* AppDelegate.swift */; };
 		37E101B027E96108009B9E3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E101AF27E96108009B9E3B /* SceneDelegate.swift */; };
 		37E101B227E96108009B9E3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E101B127E96108009B9E3B /* ViewController.swift */; };
@@ -23,7 +24,19 @@
 		E4D1D0FE27E9EC5600322B88 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0FD27E9EC5600322B88 /* CGSize+Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		37B7782C27EB5CAD0022C9D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37E101A227E96108009B9E3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37E101A927E96108009B9E3B;
+			remoteInfo = PhotoAlbumApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		37B7782827EB5CAD0022C9D5 /* PhotoAlbumAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAlbumAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37B7782A27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumAppTests.swift; sourceTree = "<group>"; };
 		37E101AA27E96108009B9E3B /* PhotoAlbumApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoAlbumApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E101AD27E96108009B9E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37E101AF27E96108009B9E3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37B7782527EB5CAD0022C9D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37E101A727E96108009B9E3B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,10 +73,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37B7782927EB5CAD0022C9D5 /* PhotoAlbumAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				37B7782A27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift */,
+			);
+			path = PhotoAlbumAppTests;
+			sourceTree = "<group>";
+		};
 		37E101A127E96108009B9E3B = {
 			isa = PBXGroup;
 			children = (
 				37E101AC27E96108009B9E3B /* PhotoAlbumApp */,
+				37B7782927EB5CAD0022C9D5 /* PhotoAlbumAppTests */,
 				37E101AB27E96108009B9E3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				37E101AA27E96108009B9E3B /* PhotoAlbumApp.app */,
+				37B7782827EB5CAD0022C9D5 /* PhotoAlbumAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +164,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		37B7782727EB5CAD0022C9D5 /* PhotoAlbumAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37B7783027EB5CAD0022C9D5 /* Build configuration list for PBXNativeTarget "PhotoAlbumAppTests" */;
+			buildPhases = (
+				37B7782427EB5CAD0022C9D5 /* Sources */,
+				37B7782527EB5CAD0022C9D5 /* Frameworks */,
+				37B7782627EB5CAD0022C9D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37B7782D27EB5CAD0022C9D5 /* PBXTargetDependency */,
+			);
+			name = PhotoAlbumAppTests;
+			productName = PhotoAlbumAppTests;
+			productReference = 37B7782827EB5CAD0022C9D5 /* PhotoAlbumAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		37E101A927E96108009B9E3B /* PhotoAlbumApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37E101BE27E96109009B9E3B /* Build configuration list for PBXNativeTarget "PhotoAlbumApp" */;
@@ -161,6 +209,10 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					37B7782727EB5CAD0022C9D5 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 37E101A927E96108009B9E3B;
+					};
 					37E101A927E96108009B9E3B = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -180,11 +232,19 @@
 			projectRoot = "";
 			targets = (
 				37E101A927E96108009B9E3B /* PhotoAlbumApp */,
+				37B7782727EB5CAD0022C9D5 /* PhotoAlbumAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		37B7782627EB5CAD0022C9D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37E101A827E96108009B9E3B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +258,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37B7782427EB5CAD0022C9D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37B7782B27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37E101A627E96108009B9E3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +285,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37B7782D27EB5CAD0022C9D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37E101A927E96108009B9E3B /* PhotoAlbumApp */;
+			targetProxy = 37B7782C27EB5CAD0022C9D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		37E101B327E96108009B9E3B /* Main.storyboard */ = {
@@ -238,6 +314,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		37B7782E27EB5CAD0022C9D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2FTMY38H7;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Joobang.PhotoAlbumAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoAlbumApp.app/PhotoAlbumApp";
+			};
+			name = Debug;
+		};
+		37B7782F27EB5CAD0022C9D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2FTMY38H7;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Joobang.PhotoAlbumAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoAlbumApp.app/PhotoAlbumApp";
+			};
+			name = Release;
+		};
 		37E101BC27E96109009B9E3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -413,6 +535,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37B7783027EB5CAD0022C9D5 /* Build configuration list for PBXNativeTarget "PhotoAlbumAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37B7782E27EB5CAD0022C9D5 /* Debug */,
+				37B7782F27EB5CAD0022C9D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		37E101A527E96108009B9E3B /* Build configuration list for PBXProject "PhotoAlbumApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
