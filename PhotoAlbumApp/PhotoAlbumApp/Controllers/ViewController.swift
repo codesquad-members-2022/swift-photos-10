@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let reusableCellName = "photoItem"
+    private let reusableCellName = "MediaCell"
     private let cellCount = 40
     private let album = Album()
     
