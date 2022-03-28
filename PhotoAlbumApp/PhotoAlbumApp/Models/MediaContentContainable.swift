@@ -8,5 +8,6 @@
 import Foundation
 
 protocol MediaContentContainable: AnyObject {
+    var id: String { get }
     var size: Size { get }
 }

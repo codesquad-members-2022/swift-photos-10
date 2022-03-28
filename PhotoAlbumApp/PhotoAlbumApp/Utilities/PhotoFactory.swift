@@ -10,12 +10,12 @@ import Foundation
 enum PhotoFactory: FactoryBuildable {
     typealias T = Photo
     
-    static func make() -> T {
+    static func make(id: String) -> T {
         let size = Size(width: 80, height: 80)
-        return self.make(with: size)
+        return self.make(id: id, with: size)
     }
     
-    static func make(with size: Size) -> T {
-        return Photo(size: size)
+    static func make(id: String, with size: Size) -> T {
+        return Photo(id: id, size: size)
     }
 }

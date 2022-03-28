@@ -9,5 +9,5 @@ import Foundation
 
 protocol FactoryBuildable {
     associatedtype T
-    static func make() -> T
+    static func make(id: String) -> T
 }
