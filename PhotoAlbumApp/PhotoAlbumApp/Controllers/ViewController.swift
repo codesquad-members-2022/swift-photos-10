@@ -9,17 +9,43 @@ import UIKit
 import Photos
 
 class ViewController: UIViewController {
-    private let reusableCellName = "MediaCell"
-    private let cellCount = 40
-    private let album = Album()
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private let imageManager = PHCachingImageManager.default()
+    private let reusableCellName = "MediaCell"
+    private let album = Album()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadCellData()
-        self.configureCollectionView()
         self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult)
+        self.configureCollectionView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // Landscape 모드일 때 SafeAreaInset 고려
+        let width = view.bounds.inset(by: view.safeAreaInsets).width
+        let columnCount = (width / 100).rounded(.towardZero)
+        let spacing: CGFloat = 1.2
+        
+        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        layout.itemSize = CGSize(width: (width / columnCount) - spacing, height: (width / columnCount) - spacing)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
+    }
+    
+    private func fetchImages() {
+        let allImagesOptions = PHFetchOptions()
+        allImagesOptions.sortDescriptors = [.init(key: "creationDate", ascending: true)]
+        
+        let assets = PHAsset.fetchAssets(with: .image, options: allImagesOptions)
+        
+        for i in 0..<assets.count {
+            let asset = assets.object(at: i)
+            let photo = PhotoFactory.make(id: asset.localIdentifier, with: Size(width: 100, height: 100))
+            self.album.append(photo)
+        }
     }
     
     private func requestPhotosAccessPermission(completion: @escaping (PHAuthorizationStatus) -> Void) {
@@ -39,6 +65,8 @@ class ViewController: UIViewController {
     
     private func handlePhotosPermissionResult(status: PHAuthorizationStatus) {
         switch status {
+        case .authorized:
+            self.fetchImages()
         case .notDetermined:
             self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult(status:))
         case .denied:
@@ -64,13 +92,6 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func loadCellData() {
-        for _ in 0..<self.cellCount {
-            let data = PhotoFactory.make()
-            self.album.append(data)
-        }
-    }
-    
     private func configureCollectionView() {
         self.collectionView.frame = self.view.bounds
         self.collectionView.dataSource = self
@@ -83,14 +104,20 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reusableCellName, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reusableCellName, for: indexPath) as? MediaCell else {
+            fatalError()
+        }
         
         guard let data = self.album[indexPath.row] else {
             return cell
         }
+
+        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [data.id], options: PHFetchOptions()).firstObject else { return cell }
         
-        cell.frame.size = CGSize(with: data.size)
-        cell.backgroundColor = .random()
+        imageManager.requestImage(for: asset, targetSize: CGSize(with: data.size), contentMode: .aspectFit, options: nil) { image, data in
+            guard let image = image else { return }
+            cell.setImage(image)
+        }
         
         return cell
     }
