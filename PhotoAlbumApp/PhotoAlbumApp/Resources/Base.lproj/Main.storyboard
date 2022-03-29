@@ -17,8 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-C6-kA2">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-C6-kA2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Edx-bE-qos">
                                     <size key="itemSize" width="40" height="40"/>
@@ -40,12 +41,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="1hk-C6-kA2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CDa-84-BIa"/>
-                            <constraint firstItem="1hk-C6-kA2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RZK-3S-4ad"/>
-                            <constraint firstItem="1hk-C6-kA2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RoP-qK-8l0"/>
-                            <constraint firstItem="1hk-C6-kA2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cjI-Ya-Pod"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="VFl-mK-pvW">
                         <barButtonItem key="backBarButtonItem" title="Done" id="hNh-cn-6RE"/>
