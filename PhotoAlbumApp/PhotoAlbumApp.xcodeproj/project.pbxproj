@@ -15,6 +15,14 @@
 		37E101B727E96109009B9E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B627E96109009B9E3B /* Assets.xcassets */; };
 		37E101BA27E96109009B9E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B827E96109009B9E3B /* LaunchScreen.storyboard */; };
 		E489916127F17520001807FF /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489916027F17520001807FF /* MediaCell.swift */; };
+		E49C137927F2D9FE0035C64E /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */; };
+		E49C137A27F2D9FE0035C64E /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0FD27E9EC5600322B88 /* CGSize+Extensions.swift */; };
+		E49C137B27F2D9FE0035C64E /* FactoryBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F927E9E32E00322B88 /* FactoryBuildable.swift */; };
+		E49C137C27F2D9FE0035C64E /* PhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F327E9E12300322B88 /* PhotoFactory.swift */; };
+		E49C137D27F2DA020035C64E /* MediaContentContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0FB27E9E4F800322B88 /* MediaContentContainable.swift */; };
+		E49C137E27F2DA020035C64E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F727E9E2EF00322B88 /* Album.swift */; };
+		E49C137F27F2DA020035C64E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F127E9E05E00322B88 /* Photo.swift */; };
+		E49C138027F2DA020035C64E /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F527E9E17F00322B88 /* Size.swift */; };
 		E4D1D0E727E9BA2300322B88 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */; };
 		E4D1D0F227E9E05E00322B88 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F127E9E05E00322B88 /* Photo.swift */; };
 		E4D1D0F427E9E12300322B88 /* PhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F327E9E12300322B88 /* PhotoFactory.swift */; };
@@ -273,6 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49C137D27F2DA020035C64E /* MediaContentContainable.swift in Sources */,
+				E49C137E27F2DA020035C64E /* Album.swift in Sources */,
+				E49C137F27F2DA020035C64E /* Photo.swift in Sources */,
+				E49C138027F2DA020035C64E /* Size.swift in Sources */,
+				E49C137927F2D9FE0035C64E /* UIColor+Random.swift in Sources */,
+				E49C137A27F2D9FE0035C64E /* CGSize+Extensions.swift in Sources */,
+				E49C137B27F2D9FE0035C64E /* FactoryBuildable.swift in Sources */,
+				E49C137C27F2D9FE0035C64E /* PhotoFactory.swift in Sources */,
 				37B7782B27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
