@@ -8,6 +8,7 @@
 import UIKit
 
 class MediaCell: UICollectionViewCell {
+    static let reusableCellName = "MediaCell"
     private let imageView = UIImageView(frame: .zero)
     
     override init(frame: CGRect) {

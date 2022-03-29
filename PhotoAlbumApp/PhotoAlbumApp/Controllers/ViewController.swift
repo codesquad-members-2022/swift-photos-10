@@ -12,14 +12,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let imageManager = PHCachingImageManager.default()
-    private let reusableCellName = "MediaCell"
     private var fetchResult: PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         PHPhotoLibrary.shared().register(self)
+        
         self.configureCollectionView()
-        self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult)
+        self.requestPhotoLibraryAccess(completion: self.handlePermissionResult)
     }
     
     deinit {
@@ -35,22 +36,23 @@ class ViewController: UIViewController {
         let spacing: CGFloat = 1.2
         
         guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let cellWidth = (width / columnCount) - spacing
         
-        layout.itemSize = CGSize(width: (width / columnCount) - spacing, height: (width / columnCount) - spacing)
+        layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         layout.minimumInteritemSpacing = spacing
         layout.minimumLineSpacing = spacing
     }
     
-    private func fetchImages() {
+    private func fetchAssets() {
         let allImagesOptions = PHFetchOptions()
-        allImagesOptions.sortDescriptors = [.init(key: "creationDate", ascending: true)]
+        allImagesOptions.sortDescriptors = [.init(key: "creationDate", ascending: false)]
         
         let assets = PHAsset.fetchAssets(with: .image, options: allImagesOptions)
         
         self.fetchResult = assets
     }
     
-    private func requestPhotosAccessPermission(completion: @escaping (PHAuthorizationStatus) -> Void) {
+    private func requestPhotoLibraryAccess(completion: @escaping (PHAuthorizationStatus) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         
         guard status != .authorized else {
@@ -65,16 +67,16 @@ class ViewController: UIViewController {
         }
     }
     
-    private func handlePhotosPermissionResult(status: PHAuthorizationStatus) {
+    private func handlePermissionResult(status: PHAuthorizationStatus) {
         switch status {
         case .authorized:
-            self.fetchImages()
+            self.fetchAssets()
         case .notDetermined:
-            self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult(status:))
+            self.requestPhotoLibraryAccess(completion: self.handlePermissionResult(status:))
         case .denied:
             self.showPermissionDeniedAlert()
         default:
-            return
+            fatalError()
         }
     }
     
@@ -106,7 +108,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reusableCellName, for: indexPath) as? MediaCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCell.reusableCellName, for: indexPath) as? MediaCell else {
             fatalError()
         }
         
@@ -146,7 +148,6 @@ extension ViewController: PHPhotoLibraryChangeObserver {
                 }
                 
                 if let inserted = changes.insertedIndexes, inserted.count > 0 {
-                    print("inserted", inserted)
                     self.collectionView.insertItems(at: inserted.map { IndexPath(item: $0, section: 0) })
                 }
                 
@@ -156,7 +157,7 @@ extension ViewController: PHPhotoLibraryChangeObserver {
                 
                 changes.enumerateMoves { fromIndex, toIndex in
                     self.collectionView.moveItem(at: IndexPath(item: fromIndex, section: 0),
-                                            to: IndexPath(item: toIndex, section: 0))
+                                                 to: IndexPath(item: toIndex, section: 0))
                 }
             })
         }
