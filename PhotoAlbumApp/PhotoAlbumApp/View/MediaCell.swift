@@ -28,6 +28,7 @@ class MediaCell: UICollectionViewCell {
     private func configure() {
         self.contentView.addSubview(imageView)
         self.imageView.frame = self.bounds
+        self.imageView.contentMode = .scaleAspectFill
         self.imageView.autoresizingMask = [
             .flexibleWidth,
             .flexibleHeight,

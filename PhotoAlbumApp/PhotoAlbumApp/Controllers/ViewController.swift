@@ -13,12 +13,17 @@ class ViewController: UIViewController {
     
     private let imageManager = PHCachingImageManager.default()
     private let reusableCellName = "MediaCell"
-    private let album = Album()
+    private var fetchResult: PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult)
+        PHPhotoLibrary.shared().register(self)
         self.configureCollectionView()
+        self.requestPhotosAccessPermission(completion: self.handlePhotosPermissionResult)
+    }
+    
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
     
     override func viewWillLayoutSubviews() {
@@ -30,6 +35,7 @@ class ViewController: UIViewController {
         let spacing: CGFloat = 1.2
         
         guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
         layout.itemSize = CGSize(width: (width / columnCount) - spacing, height: (width / columnCount) - spacing)
         layout.minimumInteritemSpacing = spacing
         layout.minimumLineSpacing = spacing
@@ -41,11 +47,7 @@ class ViewController: UIViewController {
         
         let assets = PHAsset.fetchAssets(with: .image, options: allImagesOptions)
         
-        for i in 0..<assets.count {
-            let asset = assets.object(at: i)
-            let photo = PhotoFactory.make(id: asset.localIdentifier, with: Size(width: 100, height: 100))
-            self.album.append(photo)
-        }
+        self.fetchResult = assets
     }
     
     private func requestPhotosAccessPermission(completion: @escaping (PHAuthorizationStatus) -> Void) {
@@ -100,7 +102,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.album.count
+        return self.fetchResult?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,17 +110,55 @@ extension ViewController: UICollectionViewDataSource {
             fatalError()
         }
         
-        guard let data = self.album[indexPath.row] else {
+        guard let asset = self.fetchResult?.object(at: indexPath.row) else {
             return cell
         }
-
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [data.id], options: PHFetchOptions()).firstObject else { return cell }
         
-        imageManager.requestImage(for: asset, targetSize: CGSize(with: data.size), contentMode: .aspectFit, options: nil) { image, data in
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .fast
+        
+        imageManager.requestImage(for: asset, targetSize: cell.frame.size, contentMode: .aspectFill, options: options) { image, data in
             guard let image = image else { return }
             cell.setImage(image)
         }
         
         return cell
+    }
+}
+
+extension ViewController: PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let fetchResult = self.fetchResult else { return }
+        
+        DispatchQueue.main.sync {
+            guard let changes = changeInstance.changeDetails(for: fetchResult) else { return }
+            self.fetchResult = changes.fetchResultAfterChanges
+            
+            guard changes.hasIncrementalChanges == true else {
+                self.collectionView.reloadData()
+                return
+            }
+            
+            self.collectionView.performBatchUpdates({
+                if let removed = changes.removedIndexes, removed.count > 0 {
+                    self.collectionView.deleteItems(at: removed.map { IndexPath(item: $0, section: 0) })
+                }
+                
+                if let inserted = changes.insertedIndexes, inserted.count > 0 {
+                    print("inserted", inserted)
+                    self.collectionView.insertItems(at: inserted.map { IndexPath(item: $0, section: 0) })
+                }
+                
+                if let changed = changes.changedIndexes, changed.count > 0 {
+                    self.collectionView.reloadItems(at: changed.map { IndexPath(item: $0, section: 0) })
+                }
+                
+                changes.enumerateMoves { fromIndex, toIndex in
+                    self.collectionView.moveItem(at: IndexPath(item: fromIndex, section: 0),
+                                            to: IndexPath(item: toIndex, section: 0))
+                }
+            })
+        }
     }
 }
