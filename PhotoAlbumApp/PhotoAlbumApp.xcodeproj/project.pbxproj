@@ -14,6 +14,15 @@
 		37E101B527E96108009B9E3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B327E96108009B9E3B /* Main.storyboard */; };
 		37E101B727E96109009B9E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B627E96109009B9E3B /* Assets.xcassets */; };
 		37E101BA27E96109009B9E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E101B827E96109009B9E3B /* LaunchScreen.storyboard */; };
+		E489916127F17520001807FF /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489916027F17520001807FF /* MediaCell.swift */; };
+		E49C137927F2D9FE0035C64E /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */; };
+		E49C137A27F2D9FE0035C64E /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0FD27E9EC5600322B88 /* CGSize+Extensions.swift */; };
+		E49C137B27F2D9FE0035C64E /* FactoryBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F927E9E32E00322B88 /* FactoryBuildable.swift */; };
+		E49C137C27F2D9FE0035C64E /* PhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F327E9E12300322B88 /* PhotoFactory.swift */; };
+		E49C137D27F2DA020035C64E /* MediaContentContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0FB27E9E4F800322B88 /* MediaContentContainable.swift */; };
+		E49C137E27F2DA020035C64E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F727E9E2EF00322B88 /* Album.swift */; };
+		E49C137F27F2DA020035C64E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F127E9E05E00322B88 /* Photo.swift */; };
+		E49C138027F2DA020035C64E /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F527E9E17F00322B88 /* Size.swift */; };
 		E4D1D0E727E9BA2300322B88 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */; };
 		E4D1D0F227E9E05E00322B88 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F127E9E05E00322B88 /* Photo.swift */; };
 		E4D1D0F427E9E12300322B88 /* PhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1D0F327E9E12300322B88 /* PhotoFactory.swift */; };
@@ -45,6 +54,7 @@
 		37E101B627E96109009B9E3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37E101B927E96109009B9E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37E101BB27E96109009B9E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E489916027F17520001807FF /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		E4D1D0E627E9BA2300322B88 /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		E4D1D0F127E9E05E00322B88 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		E4D1D0F327E9E12300322B88 /* PhotoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFactory.swift; sourceTree = "<group>"; };
@@ -104,12 +114,21 @@
 			children = (
 				E4D1D0E427E9B9D900322B88 /* Utilities */,
 				E4D1D0EE27E9DF2100322B88 /* Models */,
+				E489915F27F1750E001807FF /* View */,
 				E4D1D0F027E9E01D00322B88 /* Controllers */,
 				E4D1D0EF27E9DF7000322B88 /* Resources */,
 				E4D1D0E927E9BA4700322B88 /* Supports */,
 				37E101BB27E96109009B9E3B /* Info.plist */,
 			);
 			path = PhotoAlbumApp;
+			sourceTree = "<group>";
+		};
+		E489915F27F1750E001807FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E489916027F17520001807FF /* MediaCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E4D1D0E427E9B9D900322B88 /* Utilities */ = {
@@ -262,6 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49C137D27F2DA020035C64E /* MediaContentContainable.swift in Sources */,
+				E49C137E27F2DA020035C64E /* Album.swift in Sources */,
+				E49C137F27F2DA020035C64E /* Photo.swift in Sources */,
+				E49C138027F2DA020035C64E /* Size.swift in Sources */,
+				E49C137927F2D9FE0035C64E /* UIColor+Random.swift in Sources */,
+				E49C137A27F2D9FE0035C64E /* CGSize+Extensions.swift in Sources */,
+				E49C137B27F2D9FE0035C64E /* FactoryBuildable.swift in Sources */,
+				E49C137C27F2D9FE0035C64E /* PhotoFactory.swift in Sources */,
 				37B7782B27EB5CAD0022C9D5 /* PhotoAlbumAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +307,7 @@
 				E4D1D0FC27E9E4F800322B88 /* MediaContentContainable.swift in Sources */,
 				37E101AE27E96108009B9E3B /* AppDelegate.swift in Sources */,
 				37E101B027E96108009B9E3B /* SceneDelegate.swift in Sources */,
+				E489916127F17520001807FF /* MediaCell.swift in Sources */,
 				E4D1D0F827E9E2EF00322B88 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,9 +511,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H2FTMY38H7;
+				DEVELOPMENT_TEAM = FCQD35AW5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoAlbumApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -496,7 +525,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Joobang.PhotoAlbumApp;
+				PRODUCT_BUNDLE_IDENTIFIER = alex.PhotoAlbumApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -511,9 +540,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H2FTMY38H7;
+				DEVELOPMENT_TEAM = FCQD35AW5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoAlbumApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -524,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Joobang.PhotoAlbumApp;
+				PRODUCT_BUNDLE_IDENTIFIER = alex.PhotoAlbumApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
